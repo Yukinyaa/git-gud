@@ -2,16 +2,15 @@
 #include<stdlib.h>
 
 typedef struct Link linksnake;
-
-struct Link
+typedef struct Link 
 {
 	int x, y;
 	linksnake *next, *prev;
-};
+}linksnake;
 
 linksnake *getstart_snakelink(linksnake *start)
 {
-	static linksnake *saved = (linksnake*)1;
+	static linksnake *saved = LINK_NULL;
 	if (start != 0)
 	{
 		saved = start;

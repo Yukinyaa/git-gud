@@ -2,7 +2,7 @@
 
 #include"varable.h"
 #include"snakelink.h"
-
+#include"aiaction.h"
 
 
 
@@ -86,6 +86,7 @@ int resolvetick(int direction,int *length,int aimode,int reset)
 	static int ate_apple = 0;
 	static int tick = 0;
 
+	static aiState *a = 0;
 
 	if (reset)
 	{
@@ -94,14 +95,27 @@ int resolvetick(int direction,int *length,int aimode,int reset)
 			apple[i][0] = 0;
 		}
 		x = WINDOW_X / 2, y = WINDOW_Y / 2;
+		a = 0;
+		
 	}
 
 
 	randapple(apple);
 
-	if (aimode)
+	if (aimode==1)
 	{
-		direction = ai_action(x,y);
+		direction = ai_action(x, y);
+	}
+	if (aimode == 2)
+	{
+		if (a == 0)
+		{
+			a = newState();
+			a->target.x = x;
+			a->target.y = y;
+		}
+
+		direction = _snakeAiAction(a, apple, x, y);
 	}
 
 	switch (direction%4)
@@ -243,7 +257,7 @@ int gameloop(int aimode)
 			direction = resolvekeyboard(_getch());
 		}	
 		
-		if (lastTickCount + tickrate < GetTickCount() | aimode)
+		if ((lastTickCount + tickrate < GetTickCount()))// | aimode)
 		{
 			
 			printxy(0,WINDOW_Y + SPAN_Y + 1," ");

@@ -27,9 +27,18 @@
     <ClInclude Include="mainmenu.h">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="aiaction.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="aiaction.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="varable.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

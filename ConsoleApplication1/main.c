@@ -30,8 +30,10 @@ int main(void)
 		case STATE_GAME_AI:
 			status = gameloop(1);//aigameloop(); break;
 			break;
+		case STATE_NEW_GAME_AI:
+			status = gameloop(2);
+			break;
 		case STATE_GAME_EXIT:
-			_getch();
 			return;
 		default:
 			status = 0;

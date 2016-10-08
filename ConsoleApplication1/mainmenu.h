@@ -12,6 +12,8 @@ int mainmenu()
 	printf("게임하기");
 	gotoxy(25, 15);
 	printf("컴터가 하기");
+	gotoxy(25, 17);
+	printf("더 똑똑한컴터가 하기");
 	gotoxy(45,15);
 	printf("종료하기");
 	gotoxy(10, 19);
@@ -45,16 +47,19 @@ int mainmenu()
 			case 1:
 				return STATE_GAME_AI;
 			case 2:
+				return STATE_NEW_GAME_AI;
+			case 3:
 				return STATE_GAME_EXIT;
 			default:
 				return STATE_MENU;
 			}
 		}
-		selection += 3;
-		selection %= 3;
+		selection += 4;
+		selection %= 4;
 
 		gotoxy(8, 15); printf("  ");
 		gotoxy(23, 15); printf("  ");
+		gotoxy(23, 17); printf("  ");
 		gotoxy(43, 15); printf("  ");
 
 		switch (selection)
@@ -64,6 +69,8 @@ int mainmenu()
 		case 1:
 			gotoxy(23, 15); printf("▶"); break;
 		case 2:
+			gotoxy(23, 17); printf("▶"); break;
+		case 3:
 			gotoxy(43, 15); printf("▶");
 		}
 		gotoxy(WINDOW_CORNER);
